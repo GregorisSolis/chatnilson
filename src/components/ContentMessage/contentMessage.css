@@ -1,0 +1,57 @@
+.contentMessage{
+	width: 100%;
+	height: 550px;
+	overflow: hidden;
+}
+
+.header-contentMessage .led-freinds{
+	background-color: green;
+	height: 10px;
+	width: 10px;
+	margin: 1%;
+	border-radius: 100%;
+	font-family: sans-serif;
+}
+
+.header-contentMessage{
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 55px;
+	box-shadow: 0px 2px 2px 0px  rgba(0, 0, 0, .2);
+}
+
+.input-message{
+	width: 100%;
+	height: 55px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background-color: rgba(10, 10, 10, .1);
+}
+
+.input-message button{
+	width: 45px;
+	height: 45px;
+	border-radius: 100%;
+	border: none;
+	background: rgb(21, 107, 183);
+}
+
+.input-message button img{
+	width: 85%;
+	height: 65%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.input-message input{
+	height: 100%;
+	border: none;
+	background-color: transparent;
+	width: 85%;
+}
+
+.content-conversation{background: gray; height: 100%; overflow: auto;}
