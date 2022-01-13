@@ -1,0 +1,27 @@
+.container-message{
+	color: #fff;
+	width: 100%;
+	height: auto;
+	animation: angloe .5s;
+	display: flex;
+	justify-content: end;
+	margin: 3% 0;
+}
+
+.container-message .message{
+	background-color: rgb(60, 90, 180);
+	padding: 1%;
+	width: 30%;
+	border-radius: 5px;
+}
+
+.container-message p{margin: 0;}
+
+@keyframes angloe{
+	to{
+		opacity: 0;
+	}
+	from{
+		opacity: 1;
+	}
+}

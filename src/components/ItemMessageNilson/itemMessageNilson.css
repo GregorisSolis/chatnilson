@@ -1,0 +1,23 @@
+.container-message_nilson{
+	width: 100%;
+	height: auto;
+	animation: angloe .5s;
+}
+
+.container-message_nilson .message{
+	background-color: #eee;
+	max-width: 30%;
+	padding: 1%;
+	border-radius: 5px;
+}
+
+.container-message_nilson p{margin: 0;}
+
+@keyframes angloe{
+	to{
+		opacity: 0;
+	}
+	from{
+		opacity: 1;
+	}
+}

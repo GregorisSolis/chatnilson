@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to bottom right, rgb(65, 255, 255), rgb(0, 21, 70));
+  height: 100vh;
+  overflow: hidden;
 }
 
 code {

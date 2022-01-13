@@ -1,7 +1,16 @@
-import React from 'react'
+import React,{Component} from 'react'
 import './contentMessage.css'
 
-function ContentMessage(){
+import ItemMessageNilson from '../ItemMessageNilson'
+import ItemMessage from '../ItemMessage'
+
+export default class ContentMessage extends Component{
+
+	state = {
+		BD:["What your name?","You are from?"]
+	}
+
+render(){
 	return(
 		<div className="contentMessage">
 
@@ -10,7 +19,14 @@ function ContentMessage(){
 				<h2>Nilson Suport</h2>
 			</div>
 
-			<div className="content-conversation"></div>
+			<div className="content-conversation">
+
+				<ItemMessageNilson text={this.state.BD[0]} />
+
+
+				<ItemMessage text="quiero registrarme" />
+
+			</div>
 
 			<div className="input-message">
 				<input text="text" name="message" placeholder="Type your message here..." />
@@ -22,5 +38,4 @@ function ContentMessage(){
 		</div>
 	)
 }
-
-export default ContentMessage;
+}
