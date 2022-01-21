@@ -41,7 +41,10 @@
 	border-radius: 100%;
 	border: none;
 	background: rgb(21, 107, 183);
+	cursor: pointer;
 }
+
+.input-message button:hover{background: rgba(21, 107, 183, .8); box-shadow: 1px 1px 1px #aaa;}
 
 .input-message button img{
 	width: 85%;
@@ -58,8 +61,3 @@
 	width: 85%;
 }
 
-.content-conversation{
-	background-color: #fff;
-	padding: 3%;
-	box-sizing: border-box;
-}

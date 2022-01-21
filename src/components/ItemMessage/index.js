@@ -3,7 +3,7 @@ import './itemMessage.css'
 
 function ItemMessage(props){
 	return(
-		<div className="container-message">
+		<div className={`${props.fromMe ? 'container-message' : 'container-message_nilson'}`}>
 			<div className="message">
 				<p>{props.text}</p>
 			</div>

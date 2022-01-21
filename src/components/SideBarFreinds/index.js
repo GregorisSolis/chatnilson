@@ -2,6 +2,7 @@ import React from 'react'
 import './sideBarFreinds.css'
 
 function SideBarFreinds(){
+
 	return(
 		<div className="container-sidebar">
 			<div className="title_chat">
@@ -18,7 +19,6 @@ function SideBarFreinds(){
 					</div>
 					<div className="content-name_and_message">
 						<h4>Nilson</h4>
-						<p>se que me necesitas...</p>
 					</div>
 				</div>
 			</div>

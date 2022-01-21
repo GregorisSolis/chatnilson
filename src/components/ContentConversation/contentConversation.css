@@ -1,0 +1,16 @@
+.content-conversation{
+	background-color: #fff;
+	padding: 3%;
+	box-sizing: border-box;
+	overflow-y: auto;
+	flex-direction: row-reverse;
+}
+
+.data-conversation{
+	background-color: rgb(85, 115, 255);
+	text-align: center;
+	width: 65px;
+	border-radius: 5px;
+	margin: auto;
+	color: #fff;
+}

@@ -2,7 +2,6 @@
 	color: #fff;
 	width: 100%;
 	height: auto;
-	animation: angloe .5s;
 	display: flex;
 	justify-content: end;
 	margin: 3% 0;
@@ -15,13 +14,35 @@
 	border-radius: 5px;
 }
 
-.container-message p{margin: 0;}
+.container-message .message,
+.container-message_nilson .message{
+	animation: pop .25s ease;
+}
 
-@keyframes angloe{
-	to{
-		opacity: 0;
-	}
+.message p{margin: 0;}
+
+
+.container-message_nilson{
+	width: 100%;
+	height: auto;
+	margin: 1% 0;
+}
+
+.container-message_nilson .message{
+	background-color: #eee;
+	max-width: 30%;
+	padding: 1%;
+	border-radius: 5px;
+}
+
+@keyframes pop {
 	from{
-		opacity: 1;
+		transform: scale(0);
+	}
+	to{
+		transform: scale(1);
 	}
 }
+
+
+
