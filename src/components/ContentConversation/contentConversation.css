@@ -7,10 +7,11 @@
 }
 
 .data-conversation{
-	background-color: rgb(85, 115, 255);
+	background-color: rgba(51, 120, 128, 1);
 	text-align: center;
 	width: 65px;
 	border-radius: 5px;
 	margin: auto;
+	padding: 2% 0;
 	color: #fff;
 }

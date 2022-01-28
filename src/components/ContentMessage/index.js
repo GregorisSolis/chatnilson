@@ -9,27 +9,68 @@ export default class ContentMessage extends Component{
 	state = {
 		base:[{id:1, text: 'Hello, I am Nilson, to start I need your full name', fromMe: false}],
 		info: '',
+		moment: 2
 	}
 
 	//enviar mensaje
 	sendMessage = () => {
 
-		const { base, info } = this.state
+		const { base, info, moment } = this.state
+		let data = {}
 
-		let data = {id: base.length + 1, text: info, fromMe: true}
+		if(info !== ""){
 
-		base.push(data)
+			if(moment === 4 || moment === 5 || moment === 6){
 
+					//se repite 
+					data = {id: base.length + 1, text: info, fromMe: true}
+					base.push(data)
+
+
+					if(isNaN(info)){
+						data = {id: base.length + 1, text: 'the dates of birth must be in number, please try again', fromMe: false}
+						base.push(data)
+					}else{
+						this.setState({moment: moment+1})
+						this.botNilsonResponse()
+					}
+
+			}
+			else if(moment === 7){
+
+				//se repite
+				data = {id: base.length + 1, text: info, fromMe: true}
+				base.push(data)
+
+				if(info.includes('@') || info.includes('.com')){
+						this.setState({moment: moment+1})
+						this.botNilsonResponse()
+				}else{
+					data = {id: base.length + 1, text: 'the email you sent is not valid, please try again', fromMe: false}
+					base.push(data)
+				}
+
+			}
+			else{ 
+					data = {id: base.length + 1, text: info, fromMe: true}
+					base.push(data)
+					this.setState({moment: moment+1})
+					this.setState({info: ''})
+					this.botNilsonResponse()
+			}
+
+		}
 		this.setState({info: ''})
 
-		this.botNilsonResponse()
 
 	}
 
 	//respuesta de nilson
 	botNilsonResponse = () => {
 
-		const { base } = this.state
+		const { base, moment } = this.state
+
+		console.info(base)
 
 		let resp = [
 			`ok ${base[1].text}, Now that I know your name, what city and state do you live in?`,
@@ -37,44 +78,44 @@ export default class ContentMessage extends Component{
 			"now tell me the month please",
 			"to finish, the day you were born",
 			"Now tell me your email, please.",
-			"You 've finished the test Make an assessment of the process you went through to get here. We thank!"
+			"You 've finished the test Make an assessment of the process you went through to get here. We thank!",
 		]
 
-		let data = null
+		let data = {}
 
-		switch (base.length){
+		switch (moment){
 			case 2:
 				data = {id: base.length + 1, text: resp[0] , fromMe: false}
 			break;
-			case 4:
+			case 3:
 				data = {id: base.length + 1, text: resp[1] , fromMe: false}
 			break;
-			case 6:
+			case 4:
 				data = {id: base.length + 1, text: resp[2] , fromMe: false}
 			break;
-			case 8:
+			case 5:
 				data = {id: base.length + 1, text: resp[3] , fromMe: false}
 			break;			
-			case 10:
+			case 6:
 				data = {id: base.length + 1, text: resp[4] , fromMe: false}
 			break;
-			case 12:
+			case 7:
 				data = {id: base.length + 1, text: resp[5] , fromMe: false}
 			break;
-			case 14:
+			case 8:
 				data = {id: base.length + 1, text: resp[6] , fromMe: false}
 			break;
+			default:
+				console.log('--end')
 		}
 		
-		if(base.length < 14){
 			base.push(data)
-		}
 
 	}
 
 render(){
 
-	const { base, info } = this.state
+	const { base } = this.state
 
 	return(
 		<div className="contentMessage">

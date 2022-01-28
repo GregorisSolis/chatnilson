@@ -6,3 +6,9 @@
 	margin: 4% auto;
 	border-radius: 5px;
 }
+
+@media only screen and (max-width: 720px){
+	.container-chat,
+	.container-chat .contentMessage
+	{width: 100%; margin: 0; height: 100vh;}
+}
