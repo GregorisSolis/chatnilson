@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React,{ Component } from 'react'
 import './contentMessage.css'
 
 import ContentConversation from '../ContentConversation'
@@ -9,10 +9,17 @@ export default class ContentMessage extends Component{
 	state = {
 		base:[{id:1, text: 'Hello, I am Nilson, to start I need your full name', fromMe: false}],
 		info: '',
-		moment: 2
+		moment: 2,
+		user:[],
 	}
 
-	//enviar mensaje
+	//this code is responsible for knowing the current year
+	yearNow = () =>{
+		let year = new Date()
+		return year.getFullYear()
+	}
+
+	//This code is responsible for sending and verifying that the user's messages are correctly written
 	sendMessage = () => {
 
 		const { base, info, moment } = this.state
@@ -22,23 +29,28 @@ export default class ContentMessage extends Component{
 
 			if(moment === 4 || moment === 5 || moment === 6){
 
-					//se repite 
 					data = {id: base.length + 1, text: info, fromMe: true}
 					base.push(data)
 
-
-					if(isNaN(info)){
-						data = {id: base.length + 1, text: 'the dates of birth must be in number, please try again', fromMe: false}
+					if(isNaN(info) || info.includes('.') || info.includes(',') || info<=0){
+						data = {id: base.length + 1, text: 'The dates of birth must be in number, please try again', fromMe: false}
+						base.push(data)
+					}else if(moment === 4 && info > this.yearNow()){
+						data = {id: base.length + 1, text: `I'm sorry, I think we haven't reached this year yet, please try again`, fromMe: false}
+						base.push(data)
+					}else if(moment === 5 && info > 12){
+						data = {id: base.length + 1, text: `Sorry, the month ${info} does not exist, please try again`, fromMe: false}
+						base.push(data)
+					}else if(moment === 6 && info > 31){
+						data = {id: base.length + 1, text: `sorry, the day ${info} does not exist, please try again`, fromMe: false}
 						base.push(data)
 					}else{
 						this.setState({moment: moment+1})
 						this.botNilsonResponse()
 					}
-
 			}
 			else if(moment === 7){
 
-				//se repite
 				data = {id: base.length + 1, text: info, fromMe: true}
 				base.push(data)
 
@@ -49,28 +61,23 @@ export default class ContentMessage extends Component{
 					data = {id: base.length + 1, text: 'the email you sent is not valid, please try again', fromMe: false}
 					base.push(data)
 				}
-
 			}
 			else{ 
-					data = {id: base.length + 1, text: info, fromMe: true}
-					base.push(data)
-					this.setState({moment: moment+1})
-					this.setState({info: ''})
-					this.botNilsonResponse()
+				data = {id: base.length + 1, text: info, fromMe: true}
+				base.push(data)
+				this.setState({moment: moment+1})
+				this.setState({info: ''})
+				this.botNilsonResponse()
 			}
 
 		}
 		this.setState({info: ''})
-
-
 	}
 
-	//respuesta de nilson
+	//this function sends nilson's response to the user
 	botNilsonResponse = () => {
 
-		const { base, moment } = this.state
-
-		console.info(base)
+		const { base, moment, user } = this.state
 
 		let resp = [
 			`ok ${base[1].text}, Now that I know your name, what city and state do you live in?`,
@@ -85,32 +92,48 @@ export default class ContentMessage extends Component{
 
 		switch (moment){
 			case 2:
-				data = {id: base.length + 1, text: resp[0] , fromMe: false}
+				data = {id: base.length + 1, text: resp[0], fromMe: false}
 			break;
 			case 3:
-				data = {id: base.length + 1, text: resp[1] , fromMe: false}
+				data = {id: base.length + 1, text: resp[1], fromMe: false}
 			break;
 			case 4:
-				data = {id: base.length + 1, text: resp[2] , fromMe: false}
+				data = {id: base.length + 1, text: resp[2], fromMe: false}
 			break;
 			case 5:
-				data = {id: base.length + 1, text: resp[3] , fromMe: false}
+				data = {id: base.length + 1, text: resp[3], fromMe: false}
 			break;			
 			case 6:
-				data = {id: base.length + 1, text: resp[4] , fromMe: false}
+				data = {id: base.length + 1, text: resp[4], fromMe: false}
 			break;
 			case 7:
-				data = {id: base.length + 1, text: resp[5] , fromMe: false}
-			break;
-			case 8:
-				data = {id: base.length + 1, text: resp[6] , fromMe: false}
+				data = {id: base.length + 1, text: resp[5], fromMe: false}
 			break;
 			default:
-				console.log('--end')
+				return null
+				
 		}
-		
+			user.push(base[base.length-1].text)
 			base.push(data)
+			
+			if(user.length === 6){
+				this.sendInfoUser()
+			}
 
+	}
+
+	//This function is responsible for organizing and sending the data to the database
+	sendInfoUser=()=>{
+		const { user } = this.state
+
+		let profile = {
+			name: user[0],
+			cityAndState: user[1],
+			birthOfDate: user[2]+"/"+user[3]+"/"+user[4],
+			email: user[5],
+			dateNow: Date.now()
+		}
+		//code to send profile data to database
 	}
 
 render(){
@@ -119,7 +142,6 @@ render(){
 
 	return(
 		<div className="contentMessage">
-
 
 			<div className="header-contentMessage">
 				<i className="led-freinds"></i>
