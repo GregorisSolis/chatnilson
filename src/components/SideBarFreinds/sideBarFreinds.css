@@ -40,6 +40,7 @@ input:focus{outline: 0;}
 	align-items: center;
 	border-radius: 100%;
 	font-size: 1.3rem;
+	cursor: pointer;
 }
 
 .container-list_chat{
@@ -53,6 +54,7 @@ input:focus{outline: 0;}
 	padding: 2% 8%;
 	box-sizing: border-box;
 	background: rgba(255, 255, 255, .2);
+	cursor: pointer;
 }
 
 .item-friends .photo_profile{
@@ -69,3 +71,14 @@ input:focus{outline: 0;}
 }
 
 .item-friends h4, .item-friends p{margin: 0; color: #fff;}
+
+@media only screen and (max-width: 720px){
+	.container-sidebar{
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		z-index: 2;
+		border-radius: 0;
+		display: none;
+	}
+}

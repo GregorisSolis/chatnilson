@@ -1,6 +1,5 @@
 import React,{ Component } from 'react'
 import './contentMessage.css'
-
 import ContentConversation from '../ContentConversation'
 
 
@@ -144,7 +143,9 @@ render(){
 		<div className="contentMessage">
 
 			<div className="header-contentMessage">
-				<i className="led-freinds"></i>
+				<div className="user_profile_nilson">
+					<img src="https://cdn.bitrix24.com/b16507207/landing/a22/a22234b7bda07a424890d360e48cf971/headset_male_man_support_user_young_icon-1320196267025138334_1x.png" alt="img_nilson_profile" />
+				</div>
 				<h2>Nilson Suport</h2>
 			</div>
 
@@ -152,7 +153,7 @@ render(){
 
 			<div className="input-message">
 
-				<input type="text" onChange={e => this.setState({ info: e.target.value })} placeholder="Type your message here..." value={this.state.info} />
+				<input type="text" name="text" onChange={e => this.setState({ info: e.target.value })} placeholder="Type your message here..." value={this.state.info} />
 				
 				<button onClick={() => this.sendMessage()}>
 					<img src="https://cdn.pixabay.com/photo/2015/12/07/22/53/paper-planes-1081560_960_720.png" alt="icon-send"/>
