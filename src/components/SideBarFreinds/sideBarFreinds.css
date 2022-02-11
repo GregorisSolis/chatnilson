@@ -72,7 +72,7 @@ input:focus{outline: 0;}
 
 .item-friends h4, .item-friends p{margin: 0; color: #fff;}
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 800px){
 	.container-sidebar{
 		position: fixed;
 		width: 100%;

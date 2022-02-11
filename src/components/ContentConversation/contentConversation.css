@@ -16,7 +16,7 @@
 	color: #fff;
 }
 
-@media only screen and (max-width: 720px){
+@media only screen and (max-width: 800px){
 	.data-conversation{
 		width: 65px;
 		padding: 2% 0;
